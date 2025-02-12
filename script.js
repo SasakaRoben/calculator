@@ -36,3 +36,16 @@ function operate(operation, number1, number2){
     }
 }
 
+const body = document.querySelector("body");
+const buttons = document.querySelectorAll(".btn");
+const input = document.querySelector("input");
+buttons.forEach(button => {
+    button.addEventListener("click", function(){
+        input.value += this.innerText;
+    });
+});
+
+const clear = document.querySelector(".clear-button")
+clear.addEventListener("click", function(){
+    input.value = "";
+});
