@@ -33,6 +33,8 @@ function operate(operator, number1, number2){
             else{
                 return "Error: Division by zero is not allowed";
             }
+        default:
+            return "Error: Invalid operator";
     }
 }
 
@@ -57,7 +59,7 @@ buttons.forEach(button => {
             let result = input.value;
             number1 = result;
             operator = "";
-            number2 = "";
+            number2 = null;
         }
     });        
 });
@@ -65,4 +67,7 @@ buttons.forEach(button => {
 const clear = document.querySelector(".clear-button")
 clear.addEventListener("click", function(){
     input.value = "";
+    number1 = null;
+    number2 = null;
+    operator = "";
 });
