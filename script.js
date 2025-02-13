@@ -16,9 +16,9 @@ function divide(a, b){
 
 let number1;
 let number2;
-let operation;
+let operator;
 
-function operate(operation, number1, number2){
+function operate(operator, number1, number2){
     switch(operation){
         case '+':
             return add(number1, number2);
@@ -43,6 +43,28 @@ buttons.forEach(button => {
     button.addEventListener("click", function(){
         input.value += this.innerText;
     });
+});
+
+buttons.forEach(button => {
+    button.addEventListener("click", function(){
+        const value = this.innerText;
+        if (!isNaN(value)|| value === "."){
+            input.value += value;
+        }
+        else if (["+", "-", "*", "/"].includes(value)){
+            number1 = parseFloat(input.value);
+            operator = value;
+            input.value = "";
+        }
+        else if (value === "="){
+            number2 = parseFloat(input.value);
+            input.value = operate(operator, number1, number2);
+            let result = input.value;
+            number1 = result;
+            operator = "";
+            number2 = "";
+        }
+    });        
 });
 
 const clear = document.querySelector(".clear-button")
