@@ -56,7 +56,7 @@ buttons.forEach(button => {
         else if (value === "="){
             number2 = parseFloat(input.value);
             input.value = operate(operator, number1, number2);
-            let result = input.value;
+            let result = parseFloat(input.value);
             number1 = result;
             operator = "";
             number2 = null;
