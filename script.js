@@ -39,11 +39,6 @@ function operate(operator, number1, number2){
 const body = document.querySelector("body");
 const buttons = document.querySelectorAll(".btn");
 const input = document.querySelector("input");
-buttons.forEach(button => {
-    button.addEventListener("click", function(){
-        input.value += this.innerText;
-    });
-});
 
 buttons.forEach(button => {
     button.addEventListener("click", function(){
