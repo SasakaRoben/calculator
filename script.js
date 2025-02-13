@@ -19,7 +19,7 @@ let number2;
 let operator;
 
 function operate(operator, number1, number2){
-    switch(operation){
+    switch(operator){
         case '+':
             return add(number1, number2);
         case '-':
