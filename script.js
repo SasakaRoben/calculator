@@ -14,9 +14,9 @@ function divide(a, b){
     return a / b;
 }
 
-let number1;
-let number2;
-let operator;
+let number1 = null;
+let number2 = null;
+let operator = "";
 
 function operate(operator, number1, number2){
     switch(operator){
