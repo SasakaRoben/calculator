@@ -46,6 +46,7 @@ buttons.forEach(button => {
     button.addEventListener("click", function(){
         const value = this.innerText;
         if (!isNaN(value)|| value === "."){
+            if(value === "." && input.value.includes(".")) return;
             input.value += value;
         }
         else if (["+", "-", "*", "/"].includes(value)){
