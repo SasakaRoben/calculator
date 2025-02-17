@@ -17,6 +17,7 @@ function divide(a, b){
 let number1 = null;
 let number2 = null;
 let operator = "";
+isOperatorLast = false; //There is a bug that comes with misspelling the false, check on it when I return
 
 function operate(operator, number1, number2){
     switch(operator){
@@ -48,13 +49,22 @@ buttons.forEach(button => {
         if (!isNaN(value)|| value === "."){
             if(value === "." && input.value.includes(".")) return;
             input.value += value;
+            isOperatorLast = false;
         }
         else if (["+", "-", "*", "/"].includes(value)){
+            if(isOperatorLast){
+                operator = value; //replace previous operrator
+                return;
+            }
+
             number1 = parseFloat(input.value);
             operator = value;
             input.value = "";
+            isOperatorLast = true; //Mark that an operator was last pressed
         }
         else if (value === "="){
+           if(isOperatorLast) return; //Prevent evaluation if last keypress was an operator
+
             number2 = parseFloat(input.value);
             input.value = operate(operator, number1, number2);
             let result = parseFloat(input.value);
@@ -71,4 +81,5 @@ clear.addEventListener("click", function(){
     number1 = null;
     number2 = null;
     operator = "";
+    isOperatorLast = false;
 });
